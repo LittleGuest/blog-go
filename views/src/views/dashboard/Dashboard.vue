@@ -319,9 +319,9 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.interval = setInterval(() => {
+      // vm.interval = setInterval(() => {
         vm.getStatistics()
-      }, 5000)
+      // }, 5000)
     })
   },
   beforeRouteLeave(to, from, next) {

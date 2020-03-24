@@ -1,0 +1,41 @@
+basePath: '{{.BasePath}}'
+host: '{{.Host}}'
+info:
+  contact: {}
+  description: '{{.Description}}'
+  license: {}
+  title: '{{.Title}}'
+  version: '{{.Version}}'
+paths:
+  /api/v1/admin/counts:
+    get: {}
+  /api/v1/admin/environments:
+    get: {}
+  /api/v1/admin/installations:
+    post: {}
+  /api/v1/admin/is_installed:
+    get: {}
+  /api/v1/admin/logs:
+    get: {}
+  /api/v1/admin/logs/clear:
+    get: {}
+  /api/v1/admin/logs/latest:
+    get: {}
+  /api/v1/admin/password/code:
+    post: {}
+  /api/v1/admin/password/reset:
+    put: {}
+  /api/v1/admin/posts:
+    get: {}
+    post: {}
+  /api/v1/admin/posts/:
+    get: {}
+  /api/v1/admin/posts/latest:
+    get: {}
+  /api/v1/admin/posts/status/:
+    get: {}
+  /api/v1/admin/users/profiles:
+    get: {}
+  /login:
+    post: {}
+swagger: "2.0"

@@ -10,7 +10,3 @@ type Journal struct {
 	SourceContent string `json:"source_content" gorm:"type:varchar(1023);default:'';not null"`
 	Type          int    `json:"type" gorm:"type:int;default:1;null"`
 }
-
-func (t Journal) TableName() string {
-	return "journal"
-}

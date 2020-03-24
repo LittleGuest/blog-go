@@ -26,7 +26,7 @@
                 >
               </div>
             </a-tooltip>
-            <div class="username">{{ user.nickname }}</div>
+            <div class="account">{{ user.nickname }}</div>
             <div class="bio">{{ user.description }}</div>
           </div>
           <div class="profile-center-detail">
@@ -78,7 +78,7 @@
                 </span>
                 <a-form layout="vertical">
                   <a-form-item label="用户名：">
-                    <a-input v-model="user.username" />
+                    <a-input v-model="user.account" />
                   </a-form-item>
                   <a-form-item label="昵称：">
                     <a-input v-model="user.nickname" />
@@ -206,7 +206,7 @@ export default {
       })
     },
     handleUpdateProfile() {
-      if (!this.user.username) {
+      if (!this.user.account) {
         this.$notification['error']({
           message: '提示',
           description: '用户名不能为空！'
@@ -265,7 +265,7 @@ export default {
     }
   }
 
-  .username {
+  .account {
     color: rgba(0, 0, 0, 0.85);
     font-size: 20px;
     line-height: 28px;

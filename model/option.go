@@ -9,7 +9,3 @@ type Option struct {
 	OptionKey   string `json:"option_key" gorm:"type:varchar(100);not null"`
 	OptionValue string `json:"option_value" gorm:"type:varchar(1023);not null"`
 }
-
-func (t Option) TableName() string {
-	return "option"
-}

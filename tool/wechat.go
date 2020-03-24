@@ -17,11 +17,13 @@ const (
 	grantType = "authorization_code"
 )
 
+// WechatKey
 type WechatKey struct {
 	Session_key string
 	Openid      string
 }
 
+// WechatUserInfo
 type WechatUserInfo struct {
 	Openid    string
 	NickName  string
@@ -34,12 +36,13 @@ type WechatUserInfo struct {
 	WechatWaterMark
 }
 
+// WechatWaterMark
 type WechatWaterMark struct {
 	TimeStamp time.Time
 	AppId     string
 }
 
-// 发送 http get 请求 返回 session_key 和 openid
+// Code2Session 发送 http get 请求 返回 session_key 和 openid
 func Code2Session(code string) []byte {
 	url := "https://api.weixin.qq.com/sns/jscode2session?" +
 		"appid=" + appId + "&secret=" + appSecret + "&js_code=" + code + "&grant_type=" + grantType
@@ -54,7 +57,7 @@ func Code2Session(code string) []byte {
 	return res
 }
 
-// 解密微信用户数据
+// DecryptionWechat 解密微信用户数据
 func DecryptionWechat(sessionKey, encryptedData, iv string) ([]byte, error) {
 	if len(sessionKey) != 24 {
 		return nil, errors.New("微信 session_key 的长度不为 24")

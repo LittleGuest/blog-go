@@ -1,18 +1,13 @@
 package consts
 
+import "time"
+
 const (
 	// 服务信息
-	ReadTimeout   = 15
-	WriteTimeout  = 15
-	IdleTimeout   = 30
+	ReadTimeout   = 15 * time.Second
+	WriteTimeout  = 15 * time.Second
+	IdleTimeout   = 30 * time.Second
 	ServerLogFile = "server_log.log"
 
-	Salt      = "~@log@~"
-	Audience  = ""
-	ExpiresAt = 15000
-	Id        = ""
-	IssuedAt  = 0
-	Issuer    = "blog"
-	NotBefore = 0
-	Subject   = ""
+	Salt = "~@log@~"
 )

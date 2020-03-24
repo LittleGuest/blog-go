@@ -15,7 +15,3 @@ type Attachment struct {
 	Type      int    `json:"type" gorm:"type:int;default:0;null"`
 	Width     int    `json:"width" gorm:"type:int;default:0;null"`
 }
-
-func (t Attachment) TableName() string {
-	return "attachment"
-}

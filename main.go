@@ -2,10 +2,10 @@ package main
 
 import (
 	"blog/consts"
+	"blog/repo/db"
 	"blog/routers"
 	"context"
 	"log"
-	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	// db.InitDB()
+	db.InitDB()
 
 	// gin.DisableConsoleColor()
 	// logFile, err := os.OpenFile(ServerLogFile, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0666)
@@ -28,16 +28,11 @@ func main() {
 	router := routers.InitRouter()
 
 	server := &http.Server{
-		Addr:         "127.0.1.1:8888",
+		Addr:         ":65530",
 		Handler:      router,
 		ReadTimeout:  consts.ReadTimeout,
 		WriteTimeout: consts.WriteTimeout,
 		IdleTimeout:  consts.IdleTimeout,
-	}
-
-	listen,err:=net.Listen("udp",":9999")
-	if err != nil {
-		log.Fatalln(err)
 	}
 
 	go func() {

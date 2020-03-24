@@ -20,7 +20,3 @@ type Comment struct {
 	TopPriority       int    `json:"top_priority" gorm:"type:int;default:0;null"`
 	UserAgent         string `json:"user_agent" gorm:"type:varchar(512);default:'';null"`
 }
-
-func (t Comment) TableName() string {
-	return "comment"
-}

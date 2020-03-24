@@ -8,7 +8,3 @@ type PostTag struct {
 	PostID uint `json:"post_id" gorm:"type:int unsigned;not null"`
 	TagID  uint `json:"tag_id" gorm:"type:int unsigned;not null"`
 }
-
-func (t PostTag) TableName() string {
-	return "post_tag"
-}

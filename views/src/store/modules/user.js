@@ -44,12 +44,12 @@ const user = {
     login({
       commit
     }, {
-      username,
+      account,
       password
     }) {
       return new Promise((resolve, reject) => {
         adminApi
-          .login(username, password)
+          .login(account, password)
           .then(response => {
             const token = response.data.data
             Vue.$log.debug('Got token', token)

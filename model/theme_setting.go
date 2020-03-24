@@ -9,7 +9,3 @@ type ThemeSetting struct {
 	SettingKey   string `json:"setting_key" gorm:"type:varchar(255);not null"`
 	SettingValue string `json:"setting_value" gorm:"type:varchar(10239);not null"`
 }
-
-func (t ThemeSetting) TableName() string {
-	return "theme_setting"
-}

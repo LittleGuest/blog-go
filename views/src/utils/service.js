@@ -5,9 +5,11 @@ import store from '@/store'
 import router from '@/router'
 import { isObject } from './util'
 
+
 const service = axios.create({
   timeout: 10000,
-  withCredentials: true
+  withCredentials: true,
+  baseURL: '/api/'
 })
 
 function setTokenToHeader(config) {

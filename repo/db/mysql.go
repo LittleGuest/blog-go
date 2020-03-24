@@ -20,8 +20,19 @@ var (
 	extras   = "?charset=UTF8&parseTime=true"
 )
 
+// InitDB initialization mysql db
 func InitDB() {
-	db = connectMDB()
+	var err error
+	db, err = gorm.Open(driver, fmt.Sprintf("%s:%s@(%s:%d)/%s%s", username, password, host, port, dbName, extras))
+	if err != nil {
+		log.Fatalf("数据库连接失败：%v", err)
+		return
+	}
+	if err = db.DB().Ping(); err != nil {
+		log.Fatalf("数据库连接失败：%v", err)
+		return
+	}
+
 	db.LogMode(true)
 	db.SingularTable(true)
 
@@ -45,16 +56,7 @@ func InitDB() {
 	)
 }
 
-func connectMDB() *gorm.DB {
-	db, err := gorm.Open(driver, fmt.Sprintf("%s:%s@(%s:%d)/%s%s", username, password, host, port, dbName, extras))
-	if err != nil {
-		log.Fatalf("数据库连接失败：%v", err)
-		return nil
-	}
-	return db
-}
-
-// GetDB获取全局 DB
+// GetMDB get global gorm.DB
 func GetMDB() *gorm.DB {
 	return db
 }

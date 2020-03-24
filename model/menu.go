@@ -13,7 +13,3 @@ type Menu struct {
 	Team     string `json:"team" gorm:"type:varchar(255);default:'';null"`
 	Url      string `json:"url" gorm:"type:varchar(1023);not null"`
 }
-
-func (t Menu) TableName() string {
-	return "menu"
-}

@@ -10,7 +10,3 @@ type Meta struct {
 	MetaKey   string `json:"meta_key" gorm:"type:varchar(100);not null"`
 	MetaValue string `json:"meta_value" gorm:"type:varchar(1023);not null"`
 }
-
-func (t Meta) TableName() string {
-	return "meta"
-}

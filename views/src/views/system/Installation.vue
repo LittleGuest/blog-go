@@ -34,10 +34,10 @@
             >
               <a-form-item class="animated fadeInUp">
                 <a-input
-                  v-model="installation.username"
+                  v-model="installation.account"
                   placeholder="用户名"
                   v-decorator="[
-                    'username',
+                    'account',
                     {rules: [{ required: true, message: '请输入用户名' }]}
                   ]"
                 >

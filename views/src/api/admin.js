@@ -1,6 +1,6 @@
 import service from '@/utils/service'
 
-const baseUrl = '/api/admin'
+const baseUrl = '/api/v1/admin'
 
 const adminApi = {}
 
@@ -33,11 +33,11 @@ adminApi.install = data => {
   })
 }
 
-adminApi.login = (username, password) => {
+adminApi.login = (account, password) => {
   return service({
     url: `${baseUrl}/login`,
     data: {
-      username: username,
+      account: account,
       password: password
     },
     method: 'post'

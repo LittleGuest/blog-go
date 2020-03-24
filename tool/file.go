@@ -1,5 +1,5 @@
 // 文件工具包
-package filetool
+package tool
 
 import (
 	"log"

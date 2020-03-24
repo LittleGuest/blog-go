@@ -1,5 +1,5 @@
 // 时间工具包
-package timetool
+package tool
 
 import (
 	"strings"

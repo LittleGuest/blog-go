@@ -1,8 +1,9 @@
 package model
 
 import (
-	"github.com/jinzhu/gorm"
 	"time"
+
+	"github.com/jinzhu/gorm"
 )
 
 // Photo 图片
@@ -15,8 +16,4 @@ type Photo struct {
 	Location    string    `json:"location" gorm:"type:varchar(255);default:'';null"`
 	TakeTime    time.Time `json:"take_time" gorm:"type:datetime;default:CURRENT_TIMESTAMP;null"`
 	Team        string    `json:"team" gorm:"type:varchar(255);default:'';null"`
-}
-
-func (t Photo) TableName() string {
-	return "photo"
 }

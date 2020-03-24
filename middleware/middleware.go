@@ -1,13 +1,13 @@
 package middleware
 
 import (
+	"blog/consts"
 	"blog/response"
-	"blog/tool/strtool"
-	"fmt"
+	"blog/tool"
+	"net/http"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
-	"log"
-	"net/http"
 )
 
 // CorsMiddleware 跨域中间件
@@ -27,44 +27,45 @@ func CorsMiddleware() gin.HandlerFunc {
 func AuthMiddleware() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
 		tokenStr := ctx.Request.FormValue("token")
-		if strtool.IsBlank(tokenStr) {
-			ctx.JSON(http.StatusNonAuthoritativeInfo, response.Resp{
-				Code: http.StatusNonAuthoritativeInfo,
-				Msg:  "token为空",
-				Data: nil,
-			})
+		if tool.IsBlank(tokenStr) {
+			response.Return(ctx, http.StatusNonAuthoritativeInfo, http.StatusNonAuthoritativeInfo, "token为空", nil)
 			ctx.Abort()
 			return
 		}
-		log.Printf("token>>>%v", tokenStr)
 		token, err := jwt.Parse(tokenStr, func(token *jwt.Token) (interface{}, error) {
-			return []byte("AllYourBase"), nil
+			return []byte(consts.Salt), nil
 		})
 		if token == nil {
-			ctx.JSON(http.StatusNonAuthoritativeInfo, response.Resp{
-				Code: http.StatusNonAuthoritativeInfo,
-				Msg:  "token解析失败",
-				Data: nil,
-			})
+			response.Return(ctx, http.StatusNonAuthoritativeInfo, http.StatusNonAuthoritativeInfo, "token为空", nil)
 			ctx.Abort()
 			return
 		}
 
 		if token.Valid {
-			fmt.Println("You look nice today")
+			// TODO 登录的用户信息
+			ctx.Next()
 		} else if ve, ok := err.(*jwt.ValidationError); ok {
 			if ve.Errors&jwt.ValidationErrorMalformed != 0 {
-				fmt.Println("That's not even a token")
+				response.Return(ctx, http.StatusNonAuthoritativeInfo, http.StatusNonAuthoritativeInfo,
+					"That's not even a token", nil)
+				ctx.Abort()
+				return
 			} else if ve.Errors&(jwt.ValidationErrorExpired|jwt.ValidationErrorNotValidYet) != 0 {
-				// Token is either expired or not active yet
-				fmt.Println("Timing is everything")
+				response.Return(ctx, http.StatusNonAuthoritativeInfo, http.StatusNonAuthoritativeInfo,
+					"Timing is everything", nil)
+				ctx.Abort()
+				return
 			} else {
-				fmt.Println("Couldn't handle this token:", err)
+				response.Return(ctx, http.StatusNonAuthoritativeInfo, http.StatusNonAuthoritativeInfo,
+					"Couldn't handle this token", nil)
+				ctx.Abort()
+				return
 			}
 		} else {
-			fmt.Println("Couldn't handle this token:", err)
+			response.Return(ctx, http.StatusNonAuthoritativeInfo, http.StatusNonAuthoritativeInfo,
+				"Couldn't handle this token", nil)
+			ctx.Abort()
+			return
 		}
-
-		ctx.Next()
 	}
 }

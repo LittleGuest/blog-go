@@ -10,7 +10,3 @@ type Log struct {
 	LogKey    string `json:"log_key" gorm:"type:varchar(1023);default:'';null"`
 	Content   string `json:"content" gorm:"varchar(1023);not null"`
 }
-
-func (t Log) TableName() string {
-	return "log"
-}

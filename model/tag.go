@@ -10,7 +10,3 @@ type Tag struct {
 	SlugName  string `json:"slug_name" gorm:"type:varchar(255);not null;unique"`
 	Thumbnail string `json:"thumbnail" gorm:"type:varchar(1023);default:'';null"`
 }
-
-func (t Tag) TableName() string {
-	return "tag"
-}

@@ -17,7 +17,7 @@
         >
           <a-input
             placeholder="用户名/邮箱"
-            v-model="username"
+            v-model="account"
           >
             <a-icon
               slot="prefix"
@@ -136,7 +136,7 @@ import { mapActions, mapGetters, mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      username: null,
+      account: null,
       password: null,
       apiModifyVisible: false,
       defaultApiBefore: window.location.protocol + '//',
@@ -171,7 +171,7 @@ export default {
       })
     },
     handleLogin() {
-      if (!this.username) {
+      if (!this.account) {
         this.$message.warn('用户名不能为空！')
         return
       }
@@ -181,7 +181,7 @@ export default {
         return
       }
       this.landing = true
-      this.login({ username: this.username, password: this.password })
+      this.login({ account: this.account, password: this.password })
         .then(response => {
           // Go to dashboard
           this.loginSuccess()

@@ -12,7 +12,3 @@ type Category struct {
 	SlugName    string `json:"slug_name" gorm:"type:varchar(50);not null;unique"`
 	Thumbnail   string `json:"thumbnail" gorm:"type:varchar(1023);default:'';null"`
 }
-
-func (t Category) TableName() string {
-	return "category"
-}

@@ -11,7 +11,7 @@
         >
           <a-input
             placeholder="用户名"
-            v-model="resetParam.username"
+            v-model="resetParam.account"
           >
             <a-icon
               slot="prefix"
@@ -126,7 +126,7 @@ export default {
   data() {
     return {
       resetParam: {
-        username: '',
+        account: '',
         email: '',
         code: '',
         password: '',
@@ -136,7 +136,7 @@ export default {
   },
   methods: {
     handleSendCode() {
-      if (!this.resetParam.username) {
+      if (!this.resetParam.account) {
         this.$notification['error']({
           message: '提示',
           description: '用户名不能为空！'
@@ -161,7 +161,7 @@ export default {
         })
     },
     handleResetPassword() {
-      if (!this.resetParam.username) {
+      if (!this.resetParam.account) {
         this.$notification['error']({
           message: '提示',
           description: '用户名不能为空！'

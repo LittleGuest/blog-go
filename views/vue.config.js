@@ -28,6 +28,15 @@ const assetsCDN = {
 // vue.config.js
 module.exports = {
   publicPath: process.env.PUBLIC_PATH,
+  devServer:{
+    // port: 65530,
+    proxy:{
+      'api':{
+        target: 'http://localhost:65530', //对应自己的接口
+        changeOrigin: true,
+      }
+    }
+  },
   configureWebpack: {
     plugins: [
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)

@@ -3,6 +3,8 @@ package response
 import (
 	"blog/consts"
 	"encoding/json"
+
+	"github.com/gin-gonic/gin"
 )
 
 // Resp 响应
@@ -51,4 +53,14 @@ func Page(page PageInfo) string {
 		Code: consts.StatusOk,
 		Data: page,
 	})
+}
+
+// Return return
+func Return(ctx *gin.Context, statusCode int, code int, msg string, data interface{}) {
+	ctx.JSON(statusCode, Resp{
+		Code: code,
+		Msg:  msg,
+		Data: data,
+	})
+	return
 }

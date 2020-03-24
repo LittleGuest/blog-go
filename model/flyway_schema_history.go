@@ -16,7 +16,3 @@ type FlywaySchemaHistory struct {
 	ExecutionTime int       `json:"execution_time" gorm:"type:int;not null"`
 	Success       int       `json:"success" gorm:"type:int;not null"`
 }
-
-func (t FlywaySchemaHistory) TableName() string {
-	return "flyway_schema_history"
-}

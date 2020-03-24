@@ -8,7 +8,3 @@ type PostCategory struct {
 	PostID     uint `json:"post_id" gorm:"type:bigint;null"`
 	CategoryID uint `json:"category_id" gorm:"type:bigint;null"`
 }
-
-func (t PostCategory) TableName() string {
-	return "post_category"
-}
