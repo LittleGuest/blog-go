@@ -1,6 +1,7 @@
 package tool
 
 import (
+	"blog/tool"
 	"testing"
 )
 
@@ -23,7 +24,7 @@ func TestCopyProperty(t *testing.T) {
 		Sex:  "男",
 	}
 	d1 := Dst{}
-	t.Log(CopyStructProperty(&s1, &d1))
+	t.Log(tool.CopyStructProperty(&s1, &d1))
 	t.Log(s1, d1)
 
 	s2 := Src{
@@ -36,6 +37,6 @@ func TestCopyProperty(t *testing.T) {
 		Name: "gopher",
 		data: make([]interface{}, 0),
 	}
-	t.Log(CopyStructProperty(&d2, &s2))
+	t.Log(tool.CopyStructProperty(&d2, &s2))
 	t.Log(s2, d2)
 }

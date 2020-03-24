@@ -1,23 +1,26 @@
 package tool
 
-import "testing"
+import (
+	"blog/tool"
+	"testing"
+)
 
 func TestToCamelCase(t *testing.T) {
-	t.Log(ToCamelCase("dd_dd", "_"))
+	t.Log(tool.ToCamelCase("dd_dd", "_"))
 }
 
 func TestToPascal(t *testing.T) {
-	t.Log(ToPascal("dd_dd", "_"))
+	t.Log(tool.ToPascal("dd_dd", "_"))
 }
 
 func TestFirstLetterToUpper(t *testing.T) {
-	t.Log(FirstLetterToUpper("gopher"))
-	t.Log(FirstLetterToUpper("Gopher"))
+	t.Log(tool.FirstLetterToUpper("gopher"))
+	t.Log(tool.FirstLetterToUpper("Gopher"))
 }
 
 func TestToString(t *testing.T) {
-	t.Log(ToString(333))
-	t.Log(ToString("333"))
+	t.Log(tool.ToString(333))
+	t.Log(tool.ToString("333"))
 
 	stru := struct {
 		Id   string
@@ -26,19 +29,19 @@ func TestToString(t *testing.T) {
 		Id:   "999",
 		Name: "gopher",
 	}
-	t.Log(ToString(stru))
+	t.Log(tool.ToString(stru))
 }
 
 func TestIsBlank(t *testing.T) {
-	t.Log(IsBlank("gopher"))
-	t.Log(IsBlank(""))
-	t.Log(IsBlank(" "))
+	t.Log(tool.IsBlank("gopher"))
+	t.Log(tool.IsBlank(""))
+	t.Log(tool.IsBlank(" "))
 }
 
 func TestIsNotBlank(t *testing.T) {
-	t.Log(IsNotBlank("gopher"))
-	t.Log(IsNotBlank(""))
-	t.Log(IsNotBlank(" "))
+	t.Log(tool.IsNotBlank("gopher"))
+	t.Log(tool.IsNotBlank(""))
+	t.Log(tool.IsNotBlank(" "))
 }
 
 func TestXml2JsonString(t *testing.T) {
@@ -47,5 +50,5 @@ func TestXml2JsonString(t *testing.T) {
 	<data></data>
 	</xml>
 	`
-	t.Log(Xml2JsonString(x))
+	t.Log(tool.Xml2JsonString(x))
 }
